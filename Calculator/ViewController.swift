@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         }
         
         switch operation {
-        case "×": performOperation({ $0 * $1 })
+        case "×": performOperation() { $0 * $1 }
 //        case "÷":
 //        case "+":
 //        case "−":
