@@ -13,9 +13,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var display: UILabel!
     
     var userIsInTheMiddleOfTypingANumber = false
-
+    var numberAlreadyHasDecimalPoint = false
+    
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
+        if (digit == ".")
+        {
+            if numberAlreadyHasDecimalPoint {
+                return;
+            }
+            numberAlreadyHasDecimalPoint = true
+        }
         if userIsInTheMiddleOfTypingANumber {
             display.text = display.text! + digit
         } else {
@@ -61,6 +69,7 @@ class ViewController: UIViewController {
     
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
+        numberAlreadyHasDecimalPoint = false
         operandStack.append(displayValue)
         println("operandStack = \(operandStack)")
     }
